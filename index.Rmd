@@ -1,5 +1,5 @@
 ---
-title: "Gov 50 Final Project"
+title: "Gov50 Final Project"
 author: "Jonada Shukarasi"
 description: "Public Opinion and US-Russia Relations"
 output:
