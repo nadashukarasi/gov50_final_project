@@ -7,9 +7,90 @@ output:
     self_contained: false
 ---
 
+The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? Grounded in social science theories, the hypothesis posits that countries with higher economic satisfaction levels and optimistic attitudes about the financial prospects for the next generation are likely to exhibit lower suicide rates. The underlying rationale suggests that a positive outlook on the future, coupled with economic contentment, may act as protective factors against the prevalence of suicide. The explanatory variables include economic satisfaction, measured through established indices, and the outlook on the future financial well-being of the next generation, gauged through surveys or public opinion data. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, evidence of higher suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will be conducted using R, employing regression techniques to unravel the nuanced relationships between these variables.
+
+```{r}
+library(tidyverse)
+
+economy <- read_csv('economy.csv')
+future <- read_csv('future.csv')
+suicide <- read_csv('suicide.csv')
+```
+The three data files—Economy, Future, and Suicide—each capture distinct facets of societal perceptions and outcomes across various countries.
+
+Economy:
+
+This file contains information about countries and their corresponding opinions regarding the economy. It likely includes survey or opinion data that gauges the satisfaction or dissatisfaction of the population with the economic conditions in their respective countries. Variables may include measures of economic satisfaction, perceptions of economic well-being, or sentiments towards economic policies. Each entry in the dataset is likely to represent a country, accompanied by the relevant data on the opinions about its economy.
+Future:
+
+The Future file comprises data on countries and the opinions of their populations regarding the anticipated future conditions. It likely includes responses to questions about whether individuals believe the future will be harder or easier in their country. This dataset is valuable for understanding the general outlook and optimism levels of a population about the prospects for the next generation. Similar to the Economy file, each entry in the Future dataset is likely to represent a country, with corresponding data on future outlook.
+Suicide:
+
+The Suicide file is focused on suicide rates across a multitude of countries. It encompasses data on the prevalence of suicides within different nations, providing a comprehensive view of mental health outcomes globally. Each entry in the Suicide dataset is likely to represent a country, and the accompanying data would include suicide rates, possibly broken down by demographics or time periods. This file serves as a critical component for examining the relationship between societal attitudes, economic factors, and mental health outcomes, particularly suicide rates, on a global scale.
+By combining these datasets and conducting a regression analysis using the variables from the Economy and Future files as independent variables and suicide rates from the Suicide file as the dependent variable, it becomes possible to explore and understand the intricate relationships between economic satisfaction, future outlook, and suicide rates across different countries.
 
 
-## Project thoughts
+```{r}
+# Filter Suicide Dataset so that we are only looking at the countries found in economy and future datasets
+suicide <- suicide |>
+  filter(country == 'Canada' |
+         country == 'Belgium' |
+         country == 'France' |
+         country == 'Germany' |
+         country == 'Greece' |
+         country == 'Hungary' |
+         country == 'Italy' |
+         country == 'Netherlands (Kingdom of the)' |
+         country == 'Poland' | 
+         country == 'Spain' |
+         country == 'Sweden' |
+         country == 'United Kingdom of Great Britain and Northern Ireland' |
+         country == 'Israel' |
+         country == 'Australia' | 
+         country == 'Japan' |
+         country == 'Singapore' |
+         country == 'Republic of Korea' |
+         country == 'Malaysia')|>
+  filter(population == 'Total' &
+         age_range == 'Total years')
+```
+The data for this research project originates from surveys conducted in various countries, capturing societal opinions on economic satisfaction (Economy) and future outlook (Future). Additionally, suicide rates (Suicide) are obtained from global databases that compile official statistics. The key dependent variable in this study is the suicide rate, representing a quantitative measure of mental health outcomes. The independent variables include economic satisfaction and future outlook.
 
-How does public opinion of the other country impact US-Russia diplomatic relations? What factors contribute to changes in these perceptions? 
-I will be analyzing public opinion on Russia in the US and that of the US in Russia at different points in time, as well as the relationship between the two countries. My hypothesis suggests that positive public perceptions contribute to more amicable diplomatic relations, while negative perceptions may strain ties. Thus, I expect periods of a cordial relationship between the US and Russia to align with periods of positive public perception of each other. Times of high tension and strained ties are expected to align with periods of negative public opinion towards one another. The explanatory variable of interest is the sentiment towards the other country, for which I will be analyzing data gathered through public opinion polls (1945-2023) The outcome variable is the state of diplomatic relations, measured by factors such as diplomatic exchanges, cooperative initiatives, negotiation outcomes, tensions. Support for the hypothesis would be evident if positive changes in public sentiment align with increased diplomatic cooperation, while disproving the hypothesis would involve instances where positive public perceptions do not correspond with improved diplomatic relations or where negative perceptions coincide with diplomatic amelioration. This analysis aims to uncover systematic patterns connecting public sentiment and diplomatic interactions between the U.S. and Russia. My goal is to discover a correlation, or a possible causal relationship between public opinion and US-Russia relations.
+Economy Data:
+
+Source: Surveys conducted in each country.
+Measurement: The variable measuring economic satisfaction is likely rated on a categorical scale, where respondents express their opinions using categories such as "good," "very good," "bad," or "very bad." This ordinal scale captures the qualitative nuances of public sentiment towards the economy.
+Future Data:
+
+Source: Survey data gathered from diverse countries.
+Measurement: The variable assessing future outlook is measured using a categorical scale, with respondents indicating whether they believe the future will be "better off," "the same," or "worse off." This ordinal scale provides insight into the population's expectations and optimism regarding the future well-being of the next generation.
+Suicide Data:
+
+Source: Global databases compiling official statistics from various countries.
+Measurement: Suicide rates represent the dependent variable and are measured as the number of suicides per unit of population (e.g., per 100,000 people) within a specific timeframe. These rates offer a quantitative measure of mental health outcomes and serve as a critical indicator for understanding the impact of economic satisfaction and future outlook on societal well-being.
+In summary, the dependent variable is the suicide rate, and the independent variables are economic satisfaction and future outlook. The measurement of these variables involves categorical scales derived from survey responses, reflecting the nuanced opinions and perceptions of individuals within each country. This combination of survey data and official statistics allows for a comprehensive examination of the relationships between societal attitudes, economic factors, and mental health outcomes on a global scale.
+```{r}
+# Plot each opinion count for each country
+very_good_plot <- economy |>
+  ggplot(aes(x=country, y=very_good)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Economic Situation Opinion: Very Good', 
+       x = 'Country',
+       y = 'Count')
+
+very_good_plot
+```
+
+```{r}
+very_bad_plot <- economy |>
+  ggplot(aes(x=country, y=very_bad)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Economic Situation Opinion: Very Bad', 
+     x = 'Country',
+     y = 'Count')
+
+very_bad_plot
+```
+

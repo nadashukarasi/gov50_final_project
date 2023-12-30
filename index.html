@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["economy.csv","future.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","suicide.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1543,9 +1543,90 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="project-thoughts">Project thoughts</h2>
-<p>How does public opinion of the other country impact US-Russia diplomatic relations? What factors contribute to changes in these perceptions?
-I will be analyzing public opinion on Russia in the US and that of the US in Russia at different points in time, as well as the relationship between the two countries. My hypothesis suggests that positive public perceptions contribute to more amicable diplomatic relations, while negative perceptions may strain ties. Thus, I expect periods of a cordial relationship between the US and Russia to align with periods of positive public perception of each other. Times of high tension and strained ties are expected to align with periods of negative public opinion towards one another. The explanatory variable of interest is the sentiment towards the other country, for which I will be analyzing data gathered through public opinion polls (1945-2023) The outcome variable is the state of diplomatic relations, measured by factors such as diplomatic exchanges, cooperative initiatives, negotiation outcomes, tensions. Support for the hypothesis would be evident if positive changes in public sentiment align with increased diplomatic cooperation, while disproving the hypothesis would involve instances where positive public perceptions do not correspond with improved diplomatic relations or where negative perceptions coincide with diplomatic amelioration. This analysis aims to uncover systematic patterns connecting public sentiment and diplomatic interactions between the U.S. and Russia. My goal is to discover a correlation, or a possible causal relationship between public opinion and US-Russia relations.</p>
+<p>The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? Grounded in social science theories, the hypothesis posits that countries with higher economic satisfaction levels and optimistic attitudes about the financial prospects for the next generation are likely to exhibit lower suicide rates. The underlying rationale suggests that a positive outlook on the future, coupled with economic contentment, may act as protective factors against the prevalence of suicide. The explanatory variables include economic satisfaction, measured through established indices, and the outlook on the future financial well-being of the next generation, gauged through surveys or public opinion data. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, evidence of higher suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will be conducted using R, employing regression techniques to unravel the nuanced relationships between these variables.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>economy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'economy.csv'</span><span class='op'>)</span></span>
+<span><span class='va'>future</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'future.csv'</span><span class='op'>)</span></span>
+<span><span class='va'>suicide</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'suicide.csv'</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>The three data files—Economy, Future, and Suicide—each capture distinct facets of societal perceptions and outcomes across various countries.</p>
+<p>Economy:</p>
+<p>This file contains information about countries and their corresponding opinions regarding the economy. It likely includes survey or opinion data that gauges the satisfaction or dissatisfaction of the population with the economic conditions in their respective countries. Variables may include measures of economic satisfaction, perceptions of economic well-being, or sentiments towards economic policies. Each entry in the dataset is likely to represent a country, accompanied by the relevant data on the opinions about its economy.
+Future:</p>
+<p>The Future file comprises data on countries and the opinions of their populations regarding the anticipated future conditions. It likely includes responses to questions about whether individuals believe the future will be harder or easier in their country. This dataset is valuable for understanding the general outlook and optimism levels of a population about the prospects for the next generation. Similar to the Economy file, each entry in the Future dataset is likely to represent a country, with corresponding data on future outlook.
+Suicide:</p>
+<p>The Suicide file is focused on suicide rates across a multitude of countries. It encompasses data on the prevalence of suicides within different nations, providing a comprehensive view of mental health outcomes globally. Each entry in the Suicide dataset is likely to represent a country, and the accompanying data would include suicide rates, possibly broken down by demographics or time periods. This file serves as a critical component for examining the relationship between societal attitudes, economic factors, and mental health outcomes, particularly suicide rates, on a global scale.
+By combining these datasets and conducting a regression analysis using the variables from the Economy and Future files as independent variables and suicide rates from the Suicide file as the dependent variable, it becomes possible to explore and understand the intricate relationships between economic satisfaction, future outlook, and suicide rates across different countries.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Filter Suicide Dataset so that we are only looking at the countries found in economy and future datasets</span></span>
+<span><span class='va'>suicide</span> <span class='op'>&lt;-</span> <span class='va'>suicide</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Canada'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Belgium'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'France'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Germany'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Greece'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Hungary'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Italy'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Netherlands (Kingdom of the)'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Poland'</span> <span class='op'>|</span> </span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Spain'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Sweden'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'United Kingdom of Great Britain and Northern Ireland'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Israel'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Australia'</span> <span class='op'>|</span> </span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Japan'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Singapore'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Republic of Korea'</span> <span class='op'>|</span></span>
+<span>         <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Malaysia'</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>population</span> <span class='op'>==</span> <span class='st'>'Total'</span> <span class='op'>&amp;</span></span>
+<span>         <span class='va'>age_range</span> <span class='op'>==</span> <span class='st'>'Total years'</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>The data for this research project originates from surveys conducted in various countries, capturing societal opinions on economic satisfaction (Economy) and future outlook (Future). Additionally, suicide rates (Suicide) are obtained from global databases that compile official statistics. The key dependent variable in this study is the suicide rate, representing a quantitative measure of mental health outcomes. The independent variables include economic satisfaction and future outlook.</p>
+<p>Economy Data:</p>
+<p>Source: Surveys conducted in each country.
+Measurement: The variable measuring economic satisfaction is likely rated on a categorical scale, where respondents express their opinions using categories such as “good,” “very good,” “bad,” or “very bad.” This ordinal scale captures the qualitative nuances of public sentiment towards the economy.
+Future Data:</p>
+<p>Source: Survey data gathered from diverse countries.
+Measurement: The variable assessing future outlook is measured using a categorical scale, with respondents indicating whether they believe the future will be “better off,” “the same,” or “worse off.” This ordinal scale provides insight into the population’s expectations and optimism regarding the future well-being of the next generation.
+Suicide Data:</p>
+Source: Global databases compiling official statistics from various countries.
+Measurement: Suicide rates represent the dependent variable and are measured as the number of suicides per unit of population (e.g., per 100,000 people) within a specific timeframe. These rates offer a quantitative measure of mental health outcomes and serve as a critical indicator for understanding the impact of economic satisfaction and future outlook on societal well-being.
+In summary, the dependent variable is the suicide rate, and the independent variables are economic satisfaction and future outlook. The measurement of these variables involves categorical scales derived from survey responses, reflecting the nuanced opinions and perceptions of individuals within each country. This combination of survey data and official statistics allows for a comprehensive examination of the relationships between societal attitudes, economic factors, and mental health outcomes on a global scale.
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Plot each opinion count for each country</span></span>
+<span><span class='va'>very_good_plot</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>very_good</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Economic Situation Opinion: Very Good'</span>, </span>
+<span>       x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>very_good_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>very_bad_plot</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>very_bad</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Economic Situation Opinion: Very Bad'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>very_bad_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
