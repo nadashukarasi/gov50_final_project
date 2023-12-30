@@ -312,9 +312,24 @@ bo_b_plot <- merged_data |>
 bo_b_plot
 ```
 
+Better Off Future Opinion vs. Economic Opinion Plots:
+
+Better Off Future Opinion vs. Very Good Economic Opinion: The plot shows the relationship between respondents who believe the future will be better off and those who have a very good opinion about the current economic state. The positive slope of the regression line suggests that there is a tendency for respondents with a positive outlook on the future to also hold a very good opinion about the current economic situation.
+
+Better Off Future Opinion vs. Somewhat Good Economic Opinion: This plot explores the association between a positive future outlook and a somewhat good opinion about the economy. The positive slope of the regression line indicates that individuals with an optimistic view of the future tend to also perceive the current economic situation as somewhat good.
+
+Better Off Future Opinion vs. Good Economic Opinion: Similar to the previous plots, this one illustrates the correlation between a positive future outlook and a good opinion about the current economy. The positive slope suggests a relationship where those expecting a better future also tend to have a favorable opinion about the economy.
 
 
+Worse Off Future Opinion vs. Economic Opinion Plots:
 
+Worse Off Future Opinion vs. Very Bad Economic Opinion: Examining respondents who believe the future will be worse off against those with a very bad opinion about the economy, the positive slope suggests a connection between a negative future outlook and a very bad opinion about the current economic state.
+
+Worse Off Future Opinion vs. Somewhat Bad Economic Opinion: This plot explores the link between a negative future outlook and a somewhat bad opinion about the current economy. The positive slope indicates that individuals expecting a worse future are more likely to view the current economic situation as somewhat bad.
+
+Better Off Future Opinion vs. Bad Economic Opinion: The last plot in this category assesses the relationship between a negative future outlook and a bad opinion about the current economic situation. The positive slope suggests that individuals with a pessimistic view of the future are more likely to hold a negative opinion about the economy.
+
+The plots reveal interesting patterns in the relationships between future outlook and economic opinions. Overall, there is a consistent positive trend where a positive future outlook aligns with more favorable opinions about the current economic state, and conversely, a negative future outlook corresponds with less favorable economic opinions. These findings suggest an interconnectedness between perceptions of the future and evaluations of the current economic climate.
 
 
 
