@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["economy.csv","future.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","suicide.csv"]}
+  {"type":"character","attributes":{},"value":["economy.csv","future.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-12-1.png","index_files/figure-html5/unnamed-chunk-12-2.png","index_files/figure-html5/unnamed-chunk-12-3.png","index_files/figure-html5/unnamed-chunk-12-4.png","index_files/figure-html5/unnamed-chunk-12-5.png","index_files/figure-html5/unnamed-chunk-12-6.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","suicide.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1543,7 +1543,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<p>The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? Grounded in social science theories, the hypothesis posits that countries with higher economic satisfaction levels and optimistic attitudes about the financial prospects for the next generation are likely to exhibit lower suicide rates. The underlying rationale suggests that a positive outlook on the future, coupled with economic contentment, may act as protective factors against the prevalence of suicide. The explanatory variables include economic satisfaction, measured through established indices, and the outlook on the future financial well-being of the next generation, gauged through surveys or public opinion data. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, evidence of higher suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will be conducted using R, employing regression techniques to unravel the nuanced relationships between these variables.</p>
+<p>INTRODUCTION</p>
+<p>The global landscape is marked by a myriad of socio-economic challenges, and the intersection of economic well-being, future outlook, and mental health outcomes remains an area for exploration. The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? The hypothesis posits that countries with higher economic satisfaction levels have higher optimistic attitudes about the financial prospects for the next generation, and in combination, are likely to exhibit lower suicide rates. Leveraging data obtained from surveys on economic satisfaction and future outlook, alongside global suicide rates compiled from official statistics, we seek to understand how societal attitudes towards the future well-being of the next generation interact with economic satisfaction to influence suicide rates. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a positive correlation between economic satisfaction and positive attitudes toward the future, but a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, a negative correlation between economic satisfaction and positive outlook would disprove the first part of the hypothesis, while evidence of lower suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will bw employing regression techniques to unravel the nuanced relationships between these variables.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1553,14 +1554,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span><span class='va'>suicide</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>'suicide.csv'</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<p>The three data files—Economy, Future, and Suicide—each capture distinct facets of societal perceptions and outcomes across various countries.</p>
-<p>Economy:</p>
-<p>This file contains information about countries and their corresponding opinions regarding the economy. It likely includes survey or opinion data that gauges the satisfaction or dissatisfaction of the population with the economic conditions in their respective countries. Variables may include measures of economic satisfaction, perceptions of economic well-being, or sentiments towards economic policies. Each entry in the dataset is likely to represent a country, accompanied by the relevant data on the opinions about its economy.
-Future:</p>
-<p>The Future file comprises data on countries and the opinions of their populations regarding the anticipated future conditions. It likely includes responses to questions about whether individuals believe the future will be harder or easier in their country. This dataset is valuable for understanding the general outlook and optimism levels of a population about the prospects for the next generation. Similar to the Economy file, each entry in the Future dataset is likely to represent a country, with corresponding data on future outlook.
-Suicide:</p>
-<p>The Suicide file is focused on suicide rates across a multitude of countries. It encompasses data on the prevalence of suicides within different nations, providing a comprehensive view of mental health outcomes globally. Each entry in the Suicide dataset is likely to represent a country, and the accompanying data would include suicide rates, possibly broken down by demographics or time periods. This file serves as a critical component for examining the relationship between societal attitudes, economic factors, and mental health outcomes, particularly suicide rates, on a global scale.
-By combining these datasets and conducting a regression analysis using the variables from the Economy and Future files as independent variables and suicide rates from the Suicide file as the dependent variable, it becomes possible to explore and understand the intricate relationships between economic satisfaction, future outlook, and suicide rates across different countries.</p>
+<p>DATA SECTION</p>
+<p>In this study, we hypothesize a multifaceted relationship involving economic satisfaction, future outlook, and suicide rates on a global scale. First, we anticipate a positive correlation between economic satisfaction and optimistic attitudes toward the future, positing that countries with higher economic satisfaction levels are more likely to express positive expectations for the financial well-being of the next generation. Simultaneously, we expect that these optimistic attitudes, when coupled with higher economic satisfaction, will exhibit a negative correlation with suicide rates. The dual hypotheses aim to unravel the intricate interplay between economic factors, societal perceptions, and mental health outcomes on a global stage.</p>
+<p>The unit of measurement for this research is the suicide rate, reflecting the prevalence of suicides per unit of population. The independent variables include economic satisfaction and future outlook, both derived from surveys conducted across diverse countries. The dependent variable, suicide rates, is sourced from global databases compiling official statistics. Using a regression analysis in R, we will explore the statistical relationships between these variables and test the hypotheses. Economic satisfaction and future outlook will be measured on ordinal scales derived from survey responses, capturing the nuanced opinions within each country. Suicide rates will be quantitatively measured, providing a robust indicator of mental health outcomes globally.</p>
+<p>The dependent variable is the suicide rate, while economic satisfaction and future outlook serve as independent variables. Economic satisfaction is measured through survey responses, categorizing opinions on the economy as “good,” “very good,” “bad,” or “very bad.” Future outlook is similarly measured on an ordinal scale, with respondents indicating whether the future will be “better off,” “the same,” or “worse off.” Suicide rates are quantitatively measured as the number of suicides per unit of population.</p>
+<p>If we only consider the relationship between economic satisfaction and future outlook, the dependent variable would be “future outlook.” In this context, economic satisfaction serves as an independent variable, and the focus is on how it influences or is associated with the perceptions and expectations regarding the future well-being of the next generation. The “future outlook” variable, measured on an ordinal scale as “better off,” “the same,” or “worse off,” becomes the dependent variable that is influenced by the level of economic satisfaction.</p>
+<p>We anticipate that countries with higher economic satisfaction levels and positive future outlooks will exhibit lower suicide rates, providing support for our hypotheses. Conversely, if observed patterns contradict our expectations, it will prompt a detailed exploration of the complex relationships between economic factors, societal attitudes, and mental health outcomes on a global scale. The study, conducted in R, aims to contribute valuable insights for understanding and addressing mental health challenges across diverse societies.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Filter Suicide Dataset so that we are only looking at the countries found in economy and future datasets</span></span>
@@ -1587,17 +1586,7 @@ By combining these datasets and conducting a regression analysis using the varia
 <span>         <span class='va'>age_range</span> <span class='op'>==</span> <span class='st'>'Total years'</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<p>The data for this research project originates from surveys conducted in various countries, capturing societal opinions on economic satisfaction (Economy) and future outlook (Future). Additionally, suicide rates (Suicide) are obtained from global databases that compile official statistics. The key dependent variable in this study is the suicide rate, representing a quantitative measure of mental health outcomes. The independent variables include economic satisfaction and future outlook.</p>
-<p>Economy Data:</p>
-<p>Source: Surveys conducted in each country.
-Measurement: The variable measuring economic satisfaction is likely rated on a categorical scale, where respondents express their opinions using categories such as “good,” “very good,” “bad,” or “very bad.” This ordinal scale captures the qualitative nuances of public sentiment towards the economy.
-Future Data:</p>
-<p>Source: Survey data gathered from diverse countries.
-Measurement: The variable assessing future outlook is measured using a categorical scale, with respondents indicating whether they believe the future will be “better off,” “the same,” or “worse off.” This ordinal scale provides insight into the population’s expectations and optimism regarding the future well-being of the next generation.
-Suicide Data:</p>
-Source: Global databases compiling official statistics from various countries.
-Measurement: Suicide rates represent the dependent variable and are measured as the number of suicides per unit of population (e.g., per 100,000 people) within a specific timeframe. These rates offer a quantitative measure of mental health outcomes and serve as a critical indicator for understanding the impact of economic satisfaction and future outlook on societal well-being.
-In summary, the dependent variable is the suicide rate, and the independent variables are economic satisfaction and future outlook. The measurement of these variables involves categorical scales derived from survey responses, reflecting the nuanced opinions and perceptions of individuals within each country. This combination of survey data and official statistics allows for a comprehensive examination of the relationships between societal attitudes, economic factors, and mental health outcomes on a global scale.
+<p>First, let us create plots to illustrate each country’s economic satisfaction levels.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Plot each opinion count for each country</span></span>
@@ -1615,6 +1604,34 @@ In summary, the dependent variable is the suicide rate, and the independent vari
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>somewhat_good_plot</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>somewhat_good</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Economic Situation Opinion: Somewhat Good'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>somewhat_good_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>somewhat_bad_plot</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>somewhat_bad</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Economic Situation Opinion: Somewhat Bad'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>somewhat_bad_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>very_bad_plot</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>very_bad</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
@@ -1625,9 +1642,233 @@ In summary, the dependent variable is the suicide rate, and the independent vari
 <span></span>
 <span><span class='va'>very_bad_plot</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Now let us create plots that illustrate each country’s future outlook.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>better_off_plot</span> <span class='op'>&lt;-</span> <span class='va'>future</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>better_off</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Future Financial Opinion: Better Off'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>better_off_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>worse_off_plot</span> <span class='op'>&lt;-</span> <span class='va'>future</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>worse_off</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Future Financial Opinion: Worse Off'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>worse_off_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>same_plot</span> <span class='op'>&lt;-</span> <span class='va'>future</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>same</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Future Financial Opinion: Same'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Count'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>same_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>And now we look at the suicide rate for every country.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>suicide_rate_plot</span> <span class='op'>&lt;-</span> <span class='va'>suicide</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>country</span>, y<span class='op'>=</span><span class='va'>suicide_rate</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>stat<span class='op'>=</span><span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>30</span>, hjust <span class='op'>=</span> <span class='fl'>1</span>, size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Suicide Rate by Country'</span>, </span>
+<span>     x <span class='op'>=</span> <span class='st'>'Country'</span>,</span>
+<span>     y <span class='op'>=</span> <span class='st'>'Suicide Rate'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>suicide_rate_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>RESULTS</p>
+<p>First need to mutate the three datasets to account for inconsistent country names between datasets.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Merge Data</span></span>
+<span><span class='va'>economy</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>country_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Canada'</span> <span class='op'>~</span> <span class='fl'>1</span>, </span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Belgium'</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'France'</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Germany'</span> <span class='op'>~</span> <span class='fl'>4</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Greece'</span> <span class='op'>~</span> <span class='fl'>5</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Hungary'</span> <span class='op'>~</span> <span class='fl'>6</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Australia'</span> <span class='op'>~</span> <span class='fl'>7</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Japan'</span> <span class='op'>~</span> <span class='fl'>8</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Malaysia'</span> <span class='op'>~</span> <span class='fl'>9</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'UK'</span> <span class='op'>~</span> <span class='fl'>10</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Netherlands'</span> <span class='op'>~</span> <span class='fl'>11</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'South Korea'</span> <span class='op'>~</span> <span class='fl'>12</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Singapore'</span> <span class='op'>~</span> <span class='fl'>13</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Italy'</span> <span class='op'>~</span> <span class='fl'>14</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Spain'</span> <span class='op'>~</span> <span class='fl'>15</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Sweden'</span> <span class='op'>~</span> <span class='fl'>16</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Poland'</span> <span class='op'>~</span> <span class='fl'>17</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Israel'</span> <span class='op'>~</span> <span class='fl'>18</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>future</span> <span class='op'>&lt;-</span> <span class='va'>future</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>country_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Canada'</span> <span class='op'>~</span> <span class='fl'>1</span>, </span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Belgium'</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'France'</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Germany'</span> <span class='op'>~</span> <span class='fl'>4</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Greece'</span> <span class='op'>~</span> <span class='fl'>5</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Hungary'</span> <span class='op'>~</span> <span class='fl'>6</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Australia'</span> <span class='op'>~</span> <span class='fl'>7</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Japan'</span> <span class='op'>~</span> <span class='fl'>8</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Malaysia'</span> <span class='op'>~</span> <span class='fl'>9</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'UK'</span> <span class='op'>~</span> <span class='fl'>10</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Netherlands'</span> <span class='op'>~</span> <span class='fl'>11</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'South Korea'</span> <span class='op'>~</span> <span class='fl'>12</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Singapore'</span> <span class='op'>~</span> <span class='fl'>13</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Italy'</span> <span class='op'>~</span> <span class='fl'>14</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Spain'</span> <span class='op'>~</span> <span class='fl'>15</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Sweden'</span> <span class='op'>~</span> <span class='fl'>16</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Poland'</span> <span class='op'>~</span> <span class='fl'>17</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Israel'</span> <span class='op'>~</span> <span class='fl'>18</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>suicide</span> <span class='op'>&lt;-</span> <span class='va'>suicide</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>country_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Canada'</span> <span class='op'>~</span> <span class='fl'>1</span>, </span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Belgium'</span> <span class='op'>~</span> <span class='fl'>2</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'France'</span> <span class='op'>~</span> <span class='fl'>3</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Germany'</span> <span class='op'>~</span> <span class='fl'>4</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Greece'</span> <span class='op'>~</span> <span class='fl'>5</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Hungary'</span> <span class='op'>~</span> <span class='fl'>6</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Australia'</span> <span class='op'>~</span> <span class='fl'>7</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Japan'</span> <span class='op'>~</span> <span class='fl'>8</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Malaysia'</span> <span class='op'>~</span> <span class='fl'>9</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'United Kingdom of Great Britain and Northern Ireland'</span> <span class='op'>~</span> <span class='fl'>10</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Netherlands (Kingdom of the)'</span> <span class='op'>~</span> <span class='fl'>11</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Republic of Korea'</span> <span class='op'>~</span> <span class='fl'>12</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Singapore'</span> <span class='op'>~</span> <span class='fl'>13</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Italy'</span> <span class='op'>~</span> <span class='fl'>14</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Spain'</span> <span class='op'>~</span> <span class='fl'>15</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Sweden'</span> <span class='op'>~</span> <span class='fl'>16</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Poland'</span> <span class='op'>~</span> <span class='fl'>17</span>,</span>
+<span>                                <span class='va'>country</span> <span class='op'>==</span> <span class='st'>'Israel'</span> <span class='op'>~</span> <span class='fl'>18</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>merged_data</span> <span class='op'>&lt;-</span> <span class='va'>economy</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate-joins.html'>inner_join</a></span><span class='op'>(</span><span class='va'>future</span>, by <span class='op'>=</span> <span class='st'>'country_id'</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate-joins.html'>inner_join</a></span><span class='op'>(</span><span class='va'>suicide</span>, by <span class='op'>=</span> <span class='st'>'country_id'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># I made a good_opinion and bad_opinion column which combines the very good and somewhat good responses and does the same for the bad ones</span></span>
+<span><span class='va'>merged_data</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate.html'>mutate</a></span><span class='op'>(</span>good_opinion <span class='op'>=</span> <span class='va'>very_good</span> <span class='op'>+</span> <span class='va'>somewhat_good</span>, </span>
+<span>         bad_opinion <span class='op'>=</span> <span class='va'>very_bad</span> <span class='op'>+</span> <span class='va'>somewhat_bad</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://tibble.tidyverse.org/reference/view.html'>view</a></span><span class='op'>(</span><span class='va'>merged_data</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>Now let us look at the relationship between economic satisfaction and future outlook. First let’s graph the relationship between “better off” outlook and “very good” economic satisfaction, then “better off” and “somewhat good”, and finally general good opinion and general satisfaction. We will repeat the same thing for negative responses.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Plots of Relationships Between Future Opinion and Economic Opinion</span></span>
+<span></span>
+<span><span class='va'>bo_vg_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>better_off</span>, y <span class='op'>=</span> <span class='va'>very_good</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Better Off Future Opinion vs Very Good Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Better Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Very Good Responses'</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>$x
+[1] &quot;Better Off Responses&quot;
+
+$y
+[1] &quot;Very Good Responses&quot;
+
+$title
+[1] &quot;Better Off Future Opinion vs Very Good Economic Opinion&quot;
+
+attr(,&quot;class&quot;)
+[1] &quot;labels&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>bo_vg_plot</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-12-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>bo_sg_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>better_off</span>, y <span class='op'>=</span> <span class='va'>somewhat_good</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Better Off Future Opinion vs Somewhat Good Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Better Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Somewhat Good Responses'</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>bo_sg_plot</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-12-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>bo_g_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>better_off</span>, y <span class='op'>=</span> <span class='va'>good_opinion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Better Off Future Opinion vs Good Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Better Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Good Responses'</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>bo_g_plot</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-12-3.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>wo_vb_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>worse_off</span>, y <span class='op'>=</span> <span class='va'>very_bad</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Worse Off Future Opinion vs Very Bad Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Worse Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Very Bad Responses'</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>wo_vb_plot</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-12-4.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>wo_sb_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>worse_off</span>, y <span class='op'>=</span> <span class='va'>somewhat_bad</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Worse Off Future Opinion vs Somewhat Bad Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Worse Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Somewhat Bad Responses'</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>wo_sb_plot</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-12-5.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>bo_b_plot</span> <span class='op'>&lt;-</span> <span class='va'>merged_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>better_off</span>, y <span class='op'>=</span> <span class='va'>bad_opinion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>'lm'</span>, color <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>'Better Off Future Opinion vs Bad Economic Opinion'</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>'Better Off Responses'</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>'Bad Responses'</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>bo_b_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-12-6.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

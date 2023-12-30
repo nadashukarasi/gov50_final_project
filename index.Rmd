@@ -6,8 +6,9 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+INTRODUCTION
 
-The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? Grounded in social science theories, the hypothesis posits that countries with higher economic satisfaction levels and optimistic attitudes about the financial prospects for the next generation are likely to exhibit lower suicide rates. The underlying rationale suggests that a positive outlook on the future, coupled with economic contentment, may act as protective factors against the prevalence of suicide. The explanatory variables include economic satisfaction, measured through established indices, and the outlook on the future financial well-being of the next generation, gauged through surveys or public opinion data. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, evidence of higher suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will be conducted using R, employing regression techniques to unravel the nuanced relationships between these variables.
+The global landscape is marked by a myriad of socio-economic challenges, and the intersection of economic well-being, future outlook, and mental health outcomes remains an area for exploration. The central focus of this research project is to investigate the interplay between societal attitudes towards the future well-being of the next generation, economic satisfaction, and suicide rates on a global scale. The research question guiding this inquiry is: How do societal attitudes toward the future well-being of the next generation interact with economic satisfaction to influence suicide rates? The hypothesis posits that countries with higher economic satisfaction levels have higher optimistic attitudes about the financial prospects for the next generation, and in combination, are likely to exhibit lower suicide rates. Leveraging data obtained from surveys on economic satisfaction and future outlook, alongside global suicide rates compiled from official statistics, we seek to understand how societal attitudes towards the future well-being of the next generation interact with economic satisfaction to influence suicide rates. Suicide rates, the outcome variable of interest, will be measured through reliable global databases. The observed pattern supporting the hypothesis would reveal a positive correlation between economic satisfaction and positive attitudes toward the future, but a negative correlation between suicide rates and both economic satisfaction and positive attitudes toward the future. Conversely, a negative correlation between economic satisfaction and positive outlook would disprove the first part of the hypothesis, while evidence of lower suicide rates in countries with economic dissatisfaction and pessimistic outlooks would contradict the hypothesis, prompting a nuanced exploration of the intricate dynamics influencing societal mental health outcomes. The analysis will bw employing regression techniques to unravel the nuanced relationships between these variables.
 
 ```{r}
 library(tidyverse)
@@ -16,18 +17,20 @@ economy <- read_csv('economy.csv')
 future <- read_csv('future.csv')
 suicide <- read_csv('suicide.csv')
 ```
-The three data files—Economy, Future, and Suicide—each capture distinct facets of societal perceptions and outcomes across various countries.
 
-Economy:
 
-This file contains information about countries and their corresponding opinions regarding the economy. It likely includes survey or opinion data that gauges the satisfaction or dissatisfaction of the population with the economic conditions in their respective countries. Variables may include measures of economic satisfaction, perceptions of economic well-being, or sentiments towards economic policies. Each entry in the dataset is likely to represent a country, accompanied by the relevant data on the opinions about its economy.
-Future:
+DATA SECTION
 
-The Future file comprises data on countries and the opinions of their populations regarding the anticipated future conditions. It likely includes responses to questions about whether individuals believe the future will be harder or easier in their country. This dataset is valuable for understanding the general outlook and optimism levels of a population about the prospects for the next generation. Similar to the Economy file, each entry in the Future dataset is likely to represent a country, with corresponding data on future outlook.
-Suicide:
+In this study, we hypothesize a multifaceted relationship involving economic satisfaction, future outlook, and suicide rates on a global scale. First, we anticipate a positive correlation between economic satisfaction and optimistic attitudes toward the future, positing that countries with higher economic satisfaction levels are more likely to express positive expectations for the financial well-being of the next generation. Simultaneously, we expect that these optimistic attitudes, when coupled with higher economic satisfaction, will exhibit a negative correlation with suicide rates. The dual hypotheses aim to unravel the intricate interplay between economic factors, societal perceptions, and mental health outcomes on a global stage.
 
-The Suicide file is focused on suicide rates across a multitude of countries. It encompasses data on the prevalence of suicides within different nations, providing a comprehensive view of mental health outcomes globally. Each entry in the Suicide dataset is likely to represent a country, and the accompanying data would include suicide rates, possibly broken down by demographics or time periods. This file serves as a critical component for examining the relationship between societal attitudes, economic factors, and mental health outcomes, particularly suicide rates, on a global scale.
-By combining these datasets and conducting a regression analysis using the variables from the Economy and Future files as independent variables and suicide rates from the Suicide file as the dependent variable, it becomes possible to explore and understand the intricate relationships between economic satisfaction, future outlook, and suicide rates across different countries.
+The unit of measurement for this research is the suicide rate, reflecting the prevalence of suicides per unit of population. The independent variables include economic satisfaction and future outlook, both derived from surveys conducted across diverse countries. The dependent variable, suicide rates, is sourced from global databases compiling official statistics. Using a regression analysis in R, we will explore the statistical relationships between these variables and test the hypotheses. Economic satisfaction and future outlook will be measured on ordinal scales derived from survey responses, capturing the nuanced opinions within each country. Suicide rates will be quantitatively measured, providing a robust indicator of mental health outcomes globally.
+
+The dependent variable is the suicide rate, while economic satisfaction and future outlook serve as independent variables. Economic satisfaction is measured through survey responses, categorizing opinions on the economy as "good," "very good," "bad," or "very bad." Future outlook is similarly measured on an ordinal scale, with respondents indicating whether the future will be "better off," "the same," or "worse off." Suicide rates are quantitatively measured as the number of suicides per unit of population.
+
+If we only consider the relationship between economic satisfaction and future outlook, the dependent variable would be "future outlook." In this context, economic satisfaction serves as an independent variable, and the focus is on how it influences or is associated with the perceptions and expectations regarding the future well-being of the next generation. The "future outlook" variable, measured on an ordinal scale as "better off," "the same," or "worse off," becomes the dependent variable that is influenced by the level of economic satisfaction.
+
+We anticipate that countries with higher economic satisfaction levels and positive future outlooks will exhibit lower suicide rates, providing support for our hypotheses. Conversely, if observed patterns contradict our expectations, it will prompt a detailed exploration of the complex relationships between economic factors, societal attitudes, and mental health outcomes on a global scale. The study, conducted in R, aims to contribute valuable insights for understanding and addressing mental health challenges across diverse societies.
+
 
 
 ```{r}
@@ -54,21 +57,9 @@ suicide <- suicide |>
   filter(population == 'Total' &
          age_range == 'Total years')
 ```
-The data for this research project originates from surveys conducted in various countries, capturing societal opinions on economic satisfaction (Economy) and future outlook (Future). Additionally, suicide rates (Suicide) are obtained from global databases that compile official statistics. The key dependent variable in this study is the suicide rate, representing a quantitative measure of mental health outcomes. The independent variables include economic satisfaction and future outlook.
 
-Economy Data:
+First, let us create plots to illustrate each country's economic satisfaction levels. 
 
-Source: Surveys conducted in each country.
-Measurement: The variable measuring economic satisfaction is likely rated on a categorical scale, where respondents express their opinions using categories such as "good," "very good," "bad," or "very bad." This ordinal scale captures the qualitative nuances of public sentiment towards the economy.
-Future Data:
-
-Source: Survey data gathered from diverse countries.
-Measurement: The variable assessing future outlook is measured using a categorical scale, with respondents indicating whether they believe the future will be "better off," "the same," or "worse off." This ordinal scale provides insight into the population's expectations and optimism regarding the future well-being of the next generation.
-Suicide Data:
-
-Source: Global databases compiling official statistics from various countries.
-Measurement: Suicide rates represent the dependent variable and are measured as the number of suicides per unit of population (e.g., per 100,000 people) within a specific timeframe. These rates offer a quantitative measure of mental health outcomes and serve as a critical indicator for understanding the impact of economic satisfaction and future outlook on societal well-being.
-In summary, the dependent variable is the suicide rate, and the independent variables are economic satisfaction and future outlook. The measurement of these variables involves categorical scales derived from survey responses, reflecting the nuanced opinions and perceptions of individuals within each country. This combination of survey data and official statistics allows for a comprehensive examination of the relationships between societal attitudes, economic factors, and mental health outcomes on a global scale.
 ```{r}
 # Plot each opinion count for each country
 very_good_plot <- economy |>
@@ -81,6 +72,30 @@ very_good_plot <- economy |>
 
 very_good_plot
 ```
+```{r}
+somewhat_good_plot <- economy |>
+  ggplot(aes(x=country, y=somewhat_good)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Economic Situation Opinion: Somewhat Good', 
+     x = 'Country',
+     y = 'Count')
+
+somewhat_good_plot
+```
+
+```{r}
+somewhat_bad_plot <- economy |>
+  ggplot(aes(x=country, y=somewhat_bad)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Economic Situation Opinion: Somewhat Bad', 
+     x = 'Country',
+     y = 'Count')
+
+somewhat_bad_plot
+```
+
 
 ```{r}
 very_bad_plot <- economy |>
@@ -93,4 +108,264 @@ very_bad_plot <- economy |>
 
 very_bad_plot
 ```
+
+Now let us create plots that illustrate each country's future outlook. 
+
+```{r}
+better_off_plot <- future |>
+  ggplot(aes(x=country, y=better_off)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Future Financial Opinion: Better Off', 
+     x = 'Country',
+     y = 'Count')
+
+better_off_plot
+```
+
+```{r}
+worse_off_plot <- future |>
+  ggplot(aes(x=country, y=worse_off)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Future Financial Opinion: Worse Off', 
+     x = 'Country',
+     y = 'Count')
+
+worse_off_plot
+```
+
+```{r}
+same_plot <- future |>
+  ggplot(aes(x=country, y=same)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Future Financial Opinion: Same', 
+     x = 'Country',
+     y = 'Count')
+
+same_plot
+```
+
+And now we look at the suicide rate for every country. 
+
+```{r}
+suicide_rate_plot <- suicide |>
+  ggplot(aes(x=country, y=suicide_rate)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1, size = 8)) +
+  labs(title = 'Suicide Rate by Country', 
+     x = 'Country',
+     y = 'Suicide Rate')
+
+suicide_rate_plot
+```
+
+
+
+RESULTS
+
+First need to mutate the three datasets to account for inconsistent country names between datasets. 
+
+```{r}
+# Merge Data
+economy <- economy |>
+  mutate(country_id = case_when(country == 'Canada' ~ 1, 
+                                country == 'Belgium' ~ 2,
+                                country == 'France' ~ 3,
+                                country == 'Germany' ~ 4,
+                                country == 'Greece' ~ 5,
+                                country == 'Hungary' ~ 6,
+                                country == 'Australia' ~ 7,
+                                country == 'Japan' ~ 8,
+                                country == 'Malaysia' ~ 9,
+                                country == 'UK' ~ 10,
+                                country == 'Netherlands' ~ 11,
+                                country == 'South Korea' ~ 12,
+                                country == 'Singapore' ~ 13,
+                                country == 'Italy' ~ 14,
+                                country == 'Spain' ~ 15,
+                                country == 'Sweden' ~ 16,
+                                country == 'Poland' ~ 17,
+                                country == 'Israel' ~ 18))
+
+future <- future |>
+  mutate(country_id = case_when(country == 'Canada' ~ 1, 
+                                country == 'Belgium' ~ 2,
+                                country == 'France' ~ 3,
+                                country == 'Germany' ~ 4,
+                                country == 'Greece' ~ 5,
+                                country == 'Hungary' ~ 6,
+                                country == 'Australia' ~ 7,
+                                country == 'Japan' ~ 8,
+                                country == 'Malaysia' ~ 9,
+                                country == 'UK' ~ 10,
+                                country == 'Netherlands' ~ 11,
+                                country == 'South Korea' ~ 12,
+                                country == 'Singapore' ~ 13,
+                                country == 'Italy' ~ 14,
+                                country == 'Spain' ~ 15,
+                                country == 'Sweden' ~ 16,
+                                country == 'Poland' ~ 17,
+                                country == 'Israel' ~ 18))
+
+suicide <- suicide |>
+  mutate(country_id = case_when(country == 'Canada' ~ 1, 
+                                country == 'Belgium' ~ 2,
+                                country == 'France' ~ 3,
+                                country == 'Germany' ~ 4,
+                                country == 'Greece' ~ 5,
+                                country == 'Hungary' ~ 6,
+                                country == 'Australia' ~ 7,
+                                country == 'Japan' ~ 8,
+                                country == 'Malaysia' ~ 9,
+                                country == 'United Kingdom of Great Britain and Northern Ireland' ~ 10,
+                                country == 'Netherlands (Kingdom of the)' ~ 11,
+                                country == 'Republic of Korea' ~ 12,
+                                country == 'Singapore' ~ 13,
+                                country == 'Italy' ~ 14,
+                                country == 'Spain' ~ 15,
+                                country == 'Sweden' ~ 16,
+                                country == 'Poland' ~ 17,
+                                country == 'Israel' ~ 18))
+
+merged_data <- economy |>
+  inner_join(future, by = 'country_id') |>
+  inner_join(suicide, by = 'country_id')
+
+# I made a good_opinion and bad_opinion column which combines the very good and somewhat good responses and does the same for the bad ones
+merged_data <- merged_data |>
+  mutate(good_opinion = very_good + somewhat_good, 
+         bad_opinion = very_bad + somewhat_bad)
+
+view(merged_data)
+```
+
+Now let us look at the relationship between economic satisfaction and future outlook. First let's graph the relationship between "better off" outlook and "very good" economic satisfaction, then "better off" and "somewhat good", and finally general good opinion and general satisfaction. We will repeat the same thing for negative responses. 
+
+```{r}
+# Plots of Relationships Between Future Opinion and Economic Opinion
+
+bo_vg_plot <- merged_data |>
+  ggplot(aes(x = better_off, y = very_good)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red')
+  labs(title = 'Better Off Future Opinion vs Very Good Economic Opinion',
+       x = 'Better Off Responses', 
+       y = 'Very Good Responses')
+  
+bo_vg_plot
+
+
+bo_sg_plot <- merged_data |>
+  ggplot(aes(x = better_off, y = somewhat_good)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Better Off Future Opinion vs Somewhat Good Economic Opinion',
+       x = 'Better Off Responses', 
+       y = 'Somewhat Good Responses')
+  
+bo_sg_plot
+
+
+bo_g_plot <- merged_data |>
+  ggplot(aes(x = better_off, y = good_opinion)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Better Off Future Opinion vs Good Economic Opinion',
+       x = 'Better Off Responses', 
+       y = 'Good Responses')
+  
+bo_g_plot
+
+
+wo_vb_plot <- merged_data |>
+  ggplot(aes(x = worse_off, y = very_bad)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Worse Off Future Opinion vs Very Bad Economic Opinion',
+       x = 'Worse Off Responses', 
+       y = 'Very Bad Responses')
+  
+wo_vb_plot
+
+
+wo_sb_plot <- merged_data |>
+  ggplot(aes(x = worse_off, y = somewhat_bad)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Worse Off Future Opinion vs Somewhat Bad Economic Opinion',
+       x = 'Worse Off Responses', 
+       y = 'Somewhat Bad Responses')
+  
+wo_sb_plot
+
+
+bo_b_plot <- merged_data |>
+  ggplot(aes(x = better_off, y = bad_opinion)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Better Off Future Opinion vs Bad Economic Opinion',
+       x = 'Better Off Responses', 
+       y = 'Bad Responses')
+  
+bo_b_plot
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
