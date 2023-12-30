@@ -1,7 +1,7 @@
 ---
 title: "Gov_50 Final Project"
 author: "Jonada Shukarasi"
-description: "Public Opinion and US-Russia Relations"
+description: "Economic Satisfaction, Future Outlook, and Suicide Rates"
 output:
   distill::distill_article:
     self_contained: false
@@ -169,6 +169,7 @@ First need to mutate the three datasets to account for inconsistent country name
 
 ```{r}
 # Merge Data
+library(dplyr)
 economy <- economy |>
   mutate(country_id = case_when(country == 'Canada' ~ 1, 
                                 country == 'Belgium' ~ 2,
@@ -332,55 +333,207 @@ Better Off Future Opinion vs. Bad Economic Opinion: The last plot in this catego
 The plots reveal interesting patterns in the relationships between future outlook and economic opinions. Overall, there is a consistent positive trend where a positive future outlook aligns with more favorable opinions about the current economic state, and conversely, a negative future outlook corresponds with less favorable economic opinions. These findings suggest an interconnectedness between perceptions of the future and evaluations of the current economic climate.
 
 
+Now let us analyze the relationship between economic satisfaction, future outlook and suicide rates by creating scatterplots illustrating these relationships. 
+
+```{r}
+# Plots of Relationships Between Suicide Rate and Economy Opinion
+
+sr_vg <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = very_good)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Very Good Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Very Good Responses')
+sr_vg
 
 
+sr_sg_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = somewhat_good)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Somewhat Good Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Somewhat Good Responses')
+
+sr_sg_plot
 
 
+sr_g_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = good_opinion)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Good Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Good Responses')
+
+sr_g_plot
 
 
+sr_sb_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = somewhat_bad)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Somewhat Bad Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Somewhat Bad Responses')
+
+sr_sb_plot
 
 
+sr_vb_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = very_bad)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Very Bad Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Very Bad Responses')
+
+sr_vb_plot
 
 
+sr_b_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = bad_opinion)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Bad Economic Opinion',
+       x = 'Suicide Rate', 
+       y = 'Bad Responses')
+
+sr_b_plot
+```
+
+Analysis Paragraph:
+The series of plots examining the relationship between suicide rates and varying levels of economic opinions reveals a nuanced picture with no evident trend across the categories. In each case—Very Good, Somewhat Good, Good, Somewhat Bad, Very Bad, and Bad Economic Opinions—there appears to be a lack of a clear linear relationship with suicide rates. The regression lines, illustrated in red, demonstrate no consistent upward or downward trajectory, suggesting that the opinions on the current economic state, as categorized in this study, do not overtly influence suicide rates. 
+
+This absence of a discernible trend prompts a deeper consideration of potential contributing factors that may not have been captured in the current analysis. It raises questions about the complexity of the relationship between economic opinions and mental health outcomes, indicating that suicide rates might be influenced by a myriad of other variables not explored in this specific context. Factors such as socio-cultural dynamics, mental health policies, and broader economic indicators may play pivotal roles in shaping suicide rates independently of the opinions expressed regarding the economic state.
+
+While the absence of a clear trend in these plots may seem unexpected, it underscores the intricate and multifaceted nature of the factors contributing to suicide rates. Further exploration and a comprehensive analysis involving additional variables are warranted to better understand the complex interplay between economic opinions and mental health outcomes. 
+
+Now let us look at the relationship between suicide rates and future outlook although I hypothesize that no significant trends will be observed, indicating the existence of other counfounders that might influence mental health outcomes. 
+
+```{r}
+# Plots of Relationships Between Suicide Rate and Future Opinion
+
+sr_bo_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = better_off)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Better Off Future Opinion',
+       x = 'Suicide Rate', 
+       y = 'Better Off Responses')
+
+sr_bo_plot
+
+sr_wo_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = worse_off)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Worse Off Future Opinion',
+       x = 'Suicide Rate', 
+       y = 'Worse Off Responses')
+
+sr_wo_plot
+
+sr_s_plot <- merged_data |>
+  ggplot(aes(x = suicide_rate, y = same)) +
+  geom_point() +
+  geom_smooth(method = 'lm', color = 'red') +
+  labs(title = 'Suicide Rate vs Same Future Opinion',
+       x = 'Suicide Rate', 
+       y = 'Same Responses')
+
+sr_s_plot
+```
+
+In examining the association between suicide rates and varying levels of future outlook, as categorized into Very Good, Somewhat Good, Good, Somewhat Bad, Very Bad, and Bad, the scatterplots present a narrative of complexity and lack of a discernible trend. Contrary to initial expectations, the regression lines across these categories do not depict a clear linear relationship with suicide rates. The absence of a consistent upward or downward trajectory in these plots suggests that opinions regarding the anticipated future well-being of the next generation, as captured in this study, do not exhibit an overt influence on suicide rates.
+
+This unexpected lack of a distinct pattern prompts a nuanced consideration of potential contributing factors that may not have been encompassed in the current analysis. It highlights the intricate nature of the relationship between future outlook and mental health outcomes, indicating that suicide rates may be shaped by a myriad of factors beyond the scope of this particular examination. Socio-cultural nuances, mental health policies, and broader societal dynamics could potentially be influential in shaping suicide rates independently of the expressed opinions regarding the future.
+
+Let;s further analyze linear regressions. For the sake of this study. Let's only consider only "very good" and "very bad" responses on economic satisfaction. 
+
+```{r}
+# Linear Regressions 
+
+sr_vg_regression = lm(very_good ~ suicide_rate, data = merged_data)
+
+modelsummary::modelsummary(sr_vg_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
 
 
+sr_vb_regression = lm(very_bad ~ suicide_rate, data = merged_data)
+
+modelsummary::modelsummary(sr_vb_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+```
+
+The observed effect size of −0.329 suggests a small negative relationship between the suicide rate and very good economic satisfaction, as shown also by the red line in the above scatterplot, titled "Suicide Rate vs Very Good Economic Opinion".
+
+However,the non-significant p-value for the coefficient of "suicide_rate" (p = 0.513) indicates that, in this specific model, the observed relationship between the suicide rate and the dependent variable is not statistically significant. Therefore, the evidence is insufficient to reject the null hypothesis. 
+
+Similarly,the non-significant p-value (p = 0.350) for the coefficient of "suicide_rate" implies that, in this model, the observed relationship between the suicide rate and the dependent variable is not statistically significant. 
 
 
+We can do the same thing for suicide rates as they compare to future outlook. 
+
+```{r}
+sr_bo_regression = lm(better_off ~ suicide_rate, data = merged_data)
+
+modelsummary::modelsummary(sr_bo_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
 
 
+sr_wo_regression = lm(worse_off ~ suicide_rate, data = merged_data)
+
+modelsummary::modelsummary(sr_wo_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+```
+Similarly to the previous analysis about the relationship between suicide rates and economic satisfaction, we observe no statistical significance for neither worse off or better off opinios. 
+
+Lastly, let's look at the relationship that seems to prove a significant correlation between the variables, as observed in the scatterplots. 
+
+```{r}
+bo_vg_regression = lm(very_good ~ better_off, data = merged_data)
+
+modelsummary::modelsummary(bo_vg_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+wo_vb_regression = lm(very_bad ~ worse_off, data = merged_data)
+
+modelsummary::modelsummary(wo_vb_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+```
+
+Standard Error (s.e.) = 0.151
+p-value = 0.013
+A positive coefficient of 0.422 indicates a positive relationship between "worse_off" and the dependent variable. As the value of "worse_off" increases, the predicted value of the other variable also increases. The p-value is below the common significance level of 0.05, suggesting that the observed relationship between "worse_off" and "very bad" is unlikely to be due to random chance. Therefore, the correlation between "worse_off" and the dependent variable is considered statistically significant.
+The statistically significant correlation between "worse_off" and the dependent variable implies that changes in the economic satisfaction levels associated with being "worse off" are linked to changes in the dependent variable. In practical terms, as individuals or entities perceive themselves to be in a worse economic situation, there is a meaningful and statistically supported impact on the dependent variable.
 
 
+Standard Error (s.e.) = 2.068
+p-value = 0.033
+The p-value for the intercept is 0.033, which is below the commonly used significance level of 0.05. This suggests that there is enough statistical evidence to reject the null hypothesis. 
+The positive coefficient of 0.356 for "better_off" implies that as the value of "better_off" increases, the predicted value of the dependent variable also increases. The coefficient for "better_off" is highly statistically significant with a p-value less than 0.001, suggesting a robust relationship with the dependent variable.
 
+In conclusion, the results indicate a significant positive correlation between the "better_off" variable and the dependent variable. This suggests that variations in economic satisfaction levels associated with being "better off" are strongly associated with variations in the dependent variable, providing valuable insights into the relationship between these two variables in the context of your analysis.
 
+CONCLUSION
+In summary, our analysis revealed significant correlations between economic satisfaction and future outlook, aligning with the first part of our hypothesis. However, we found little to no connection between economic satisfaction and suicide rates, as well as limited association between future outlook and suicide rates, challenging the second part of our hypothesis. While the robust relationship between economic satisfaction and future outlook underscores the importance of positive economic perceptions in shaping individuals' outlook on the future, the lack of a direct link to suicide rates prompts further exploration into nuanced factors influencing self-harm tendencies.  Despite expectations of a potential mediating role of future outlook, the analysis suggests little to no direct association between economic satisfaction, future outlook, and suicide rates. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Several limitations deserve consideration, including the potential influence of unobserved confounding variables and the cross-sectional nature of the data, limiting causal inference. 
+Additionally, cultural, social, and healthcare factors not accounted for in the dataset could impact suicide rates. Future analyses could benefit from longitudinal data, enabling a more nuanced exploration of temporal relationships. Additionally, incorporating broader sociocultural variables and mental health indicators would contribute to a more comprehensive understanding of the complex dynamics surrounding suicide rates.
